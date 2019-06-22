@@ -22,8 +22,7 @@ class MountPoint extends React.Component<IProps> {
 
   render() {
     const { microId } = this.props
-    const id = `${microId.segment}-${microId.componentId}`
-    return <div id={id}>test</div>
+    return <div id={microId.toId()}>test</div>
   }
 }
 

@@ -1,42 +1,45 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   mode: process.env.NODE_ENV || 'development',
   entry: ['./src/index.tsx'],
+  optimization: {
+    splitChunks: {
+      name: 'vendor',
+      chunks: 'initial'
+    }
+  },
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist')
   },
 
   devtool: 'source-map',
 
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'sample-react-ts',
+      title: 'integration-layer-test',
       filename: 'index.html',
-      template: 'src/index.html',
-    }),
+      template: 'src/index.html'
+    })
   ],
 
   resolve: {
-    extensions: ['.ts', '.tsx', '.js'],
+    extensions: ['.ts', '.tsx', '.js']
   },
 
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        use: [
-          { loader: 'babel-loader' },
-          { loader: 'ts-loader' },
-        ],
-      },
-    ],
+        use: [{ loader: 'babel-loader' }, { loader: 'ts-loader' }]
+      }
+    ]
   },
   devServer: {
     open: true,
     contentBase: path.resolve(__dirname, 'dist'),
-    port: '8001',
-  },
-};
+    port: '8001'
+  }
+}
