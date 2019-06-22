@@ -9,7 +9,9 @@
     "dev": "webpack-dev-server --hot --inline",
     "build": "webpack",
     "start": "node server.js",
-    "clean": "rm ./dist/*"
+    "clean": "rm ./dist/*",
+    "lint": "eslint src/** --ext .ts,.tsx",
+    "lint:fix": "yarn lint --fix"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -23,10 +25,14 @@
     "babel-loader": "^8.0.6",
     "eslint": "^6.0.0",
     "eslint-config-airbnb-typescript": "^4.0.0",
+    "eslint-config-prettier": "^5.0.0",
     "eslint-plugin-import": "^2.17.3",
     "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.13.0",
+    "eslint-plugin-react-hooks": "^1.6.0",
     "html-webpack-plugin": "^3.2.0",
+    "prettier": "^1.18.2",
     "ts-loader": "^6.0.2",
     "typescript": "^3.5.1",
     "webpack": "^4.33.0",
