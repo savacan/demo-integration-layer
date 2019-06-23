@@ -1,8 +1,8 @@
 const path = require('path')
+// eslint-disable-next-line import/no-extraneous-dependencies
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  mode: process.env.NODE_ENV || 'development',
   entry: {
     integration: './src/index.tsx'
   },
@@ -14,11 +14,8 @@ module.exports = {
   },
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: 'http://localhost:8001/public'
+    path: path.resolve(__dirname, 'dist')
   },
-
-  devtool: 'source-map',
 
   plugins: [
     new HtmlWebpackPlugin({
@@ -39,10 +36,5 @@ module.exports = {
         use: [{ loader: 'babel-loader' }, { loader: 'ts-loader' }]
       }
     ]
-  },
-  devServer: {
-    open: true,
-    contentBase: path.resolve(__dirname, 'dist'),
-    port: '8001'
   }
 }

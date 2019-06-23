@@ -5,4 +5,12 @@ const local: { key: MicroSegments; url: string }[] = [
   { key: 'integration', url: 'http://localhost:8001/public' }
 ]
 
-export { local }
+const ghPages: { key: MicroSegments; url: string }[] = [
+  { key: 'testContent1', url: 'https://savacan.github.io/demo-content1/' },
+  {
+    key: 'integration',
+    url: 'https://savacan.github.io/demo-integration-layer/'
+  }
+]
+
+export { local, ghPages }
