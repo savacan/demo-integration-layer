@@ -7,7 +7,7 @@ const Main: React.FC = (): JSX.Element => (
   <div>
     <div> Hello, Happy World! </div>
     <MountPoint
-      microId={idetificationKeyFactory('testContent1', 'hoge')}
+      microId={idetificationKeyFactory('integration', 'test')}
       type="micro"
     />
   </div>

@@ -7,7 +7,8 @@ module.exports = {
   "extends": [
     "airbnb",
     "plugin:prettier/recommended",
-    "prettier/@typescript-eslint"
+    "prettier/@typescript-eslint",
+    "prettier/react"
   ],
   "globals": {
     "__DEV__": true
@@ -15,7 +16,8 @@ module.exports = {
   "plugins": [
     "@typescript-eslint",
     "react-hooks",
-    "prettier"
+    "prettier",
+    "react"
   ],
   "parserOptions": {
     "sourceType": "module",

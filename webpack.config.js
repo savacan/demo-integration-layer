@@ -3,16 +3,19 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   mode: process.env.NODE_ENV || 'development',
-  entry: ['./src/index.tsx'],
+  entry: {
+    integration: './src/index.tsx'
+  },
   optimization: {
     splitChunks: {
-      name: 'vendor',
+      name: 'integration_vendor',
       chunks: 'initial'
     }
   },
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: 'http://localhost:8001/public'
   },
 
   devtool: 'source-map',

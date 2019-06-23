@@ -1,10 +1,20 @@
 import * as React from 'react'
 import URLResolver from '../../../utils/urlResolver'
 import { MicroIdetificationKey } from '../../../externals/management/idetificationKeyFactory'
+import loadjsWrapper from '../../../utils/loadjsWrapper'
 
 interface IProps {
   microId: MicroIdetificationKey
   type: 'micro' | 'custom'
+}
+
+const clickHandler = (microId: MicroIdetificationKey) => (
+  event: React.MouseEvent
+) => {
+  event.preventDefault()
+  const { segment } = microId
+  loadjsWrapper.load(microId)
+  console.log(`on click ${segment}`)
 }
 
 class MountPoint extends React.Component<IProps> {
@@ -22,7 +32,14 @@ class MountPoint extends React.Component<IProps> {
 
   render() {
     const { microId } = this.props
-    return <div id={microId.toId()}>test</div>
+    return (
+      <div id={microId.toId()}>
+        <div> its {`${microId.toId()}`} </div>
+        <button onClick={clickHandler(microId)} type="button">
+          test button
+        </button>
+      </div>
+    )
   }
 }
 
