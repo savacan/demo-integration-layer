@@ -6,7 +6,7 @@ const common = require('./webpack.common')
 module.exports = merge(common, {
   mode: 'development',
   output: {
-    publicPath: 'http://localhost:8001/public'
+    publicPath: 'http://localhost:8001/'
   },
   devtool: 'source-map',
   devServer: {
