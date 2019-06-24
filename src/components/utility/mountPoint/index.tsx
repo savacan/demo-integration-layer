@@ -1,5 +1,4 @@
 import * as React from 'react'
-import URLResolver from '../../../utils/urlResolver'
 import { MicroIdetificationKey } from '../../../externals/management/idetificationKeyFactory'
 import loadjsWrapper from '../../../utils/loadjsWrapper'
 
@@ -8,38 +7,40 @@ interface IProps {
   type: 'micro' | 'custom'
 }
 
-const clickHandler = (microId: MicroIdetificationKey) => (
-  event: React.MouseEvent
-) => {
-  event.preventDefault()
-  const { segment } = microId
-  loadjsWrapper.load(microId)
-  console.log(`on click ${segment}`)
-}
-
 class MountPoint extends React.Component<IProps> {
+  private refEls: React.RefObject<HTMLDivElement>
+
+  private componentController: { mount: () => void; unmount: () => void }
+
   constructor(props: Readonly<IProps>) {
     super(props)
-    console.log(props.type)
+    this.refEls = React.createRef<HTMLDivElement>()
+    this.componentController = { mount: () => {}, unmount: () => {} }
   }
 
-  componentDidMount() {
+  public componentDidMount() {
     const { microId } = this.props
-    console.log(`id: ${microId.segment + microId.componentId} is mounted`)
-    const url = URLResolver(microId.segment)
-    console.log(`target url is ${url}`)
+    console.log(`els: ${this.refEls.current}, id: ${microId.toId()}`)
+    window.registry
+      .whenDefined(microId.toId())
+      .then(factory => {
+        console.log('when defined ref is :', this.refEls.current)
+        if (this.refEls.current) {
+          this.componentController = factory(this.refEls.current)
+          this.componentController.mount()
+        }
+      })
+      .catch(e => console.log(e))
+      .finally(() => console.log('component load finaly'))
+    loadjsWrapper.load(microId)
+  }
+
+  componentWillUnmount() {
+    this.componentController.unmount()
   }
 
   render() {
-    const { microId } = this.props
-    return (
-      <div id={microId.toId()}>
-        <div> its {`${microId.toId()}`} </div>
-        <button onClick={clickHandler(microId)} type="button">
-          test button
-        </button>
-      </div>
-    )
+    return <div ref={this.refEls} />
   }
 }
 

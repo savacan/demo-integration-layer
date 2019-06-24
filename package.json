@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
+    "@babel/polyfill": "^7.4.4",
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
     "@types/loadjs": "^3.5.0",
@@ -46,9 +47,16 @@
   "dependencies": {
     "@emotion/babel-preset-css-prop": "^10.0.9",
     "@emotion/core": "^10.0.10",
+    "@emotion/styled": "^10.0.12",
+    "@types/history": "^4.7.2",
+    "@types/react-router": "^5.0.2",
+    "@types/react-router-dom": "^4.3.4",
     "express": "^4.17.1",
+    "history": "^4.9.0",
     "loadjs": "^3.6.1",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-router": "^5.0.1",
+    "react-router-dom": "^5.0.1"
   }
 }

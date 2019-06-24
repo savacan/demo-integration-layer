@@ -6,7 +6,7 @@ const local: { key: MicroSegments; url: string }[] = [
 ]
 
 const ghPages: { key: MicroSegments; url: string }[] = [
-  { key: 'sidebar', url: 'https://savacan.github.io/demo-content1' },
+  { key: 'sidebar', url: 'https://savacan.github.io/demo-sidebar' },
   {
     key: 'integration',
     url: 'https://savacan.github.io/demo-integration-layer'

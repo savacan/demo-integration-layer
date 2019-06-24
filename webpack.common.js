@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: {
+    polyfill: '@babel/polyfill',
     integration: './src/index.tsx'
   },
   optimization: {
