@@ -1,14 +1,21 @@
 import * as React from 'react'
 import { Route, Switch, RouteComponentProps, withRouter } from 'react-router'
 import { History } from 'history'
-import MountPoint from '../components/utility/mountPoint'
-import idetificationKeyFactory from '../externals/management/idetificationKeyFactory'
+
+import styled from '@emotion/styled'
+import VueComponent from '../externals/components/vueComponent'
+import SideBar from '../externals/components/SideBar'
 
 declare global {
   interface Window {
     context: { history: History }
   }
 }
+
+const LabelDiv = styled.div({
+  fontSize: '32px',
+  marginBottom: '100px'
+})
 
 class RouteList extends React.Component<{} & RouteComponentProps<{}>> {
   public constructor(props: Readonly<RouteComponentProps<{}>>) {
@@ -21,19 +28,13 @@ class RouteList extends React.Component<{} & RouteComponentProps<{}>> {
     return (
       <>
         <Switch>
-          <Route path="/" exact render={_props => <div>exact route</div>} />
           <Route
-            path="/next"
-            render={_props => (
-              <div>
-                <div>sidebar route</div>
-                <MountPoint
-                  microId={idetificationKeyFactory('sidebar', 'common')}
-                  type="micro"
-                />
-              </div>
-            )}
+            path="/"
+            exact
+            render={_props => <LabelDiv>top default route</LabelDiv>}
           />
+          <Route path="/react" component={SideBar} />
+          <Route path="/vue" component={VueComponent} />
         </Switch>
       </>
     )

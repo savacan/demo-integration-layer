@@ -1,6 +1,6 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
-import { Link } from 'react-router-dom'
+import TempSideBar from '../container/sidebar'
 
 const Wrapper = styled.div({
   display: 'flex'
@@ -8,7 +8,7 @@ const Wrapper = styled.div({
 
 const SidebarArea = styled.div({
   height: '100vh',
-  background: 'gray'
+  borderRight: 'solid 3px gray'
 })
 
 const MainArea = styled.div({
@@ -16,6 +16,10 @@ const MainArea = styled.div({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center'
+})
+
+const MountArea = styled.div({
+  marginTop: '100px'
 })
 
 const FooterArea = styled.div({
@@ -28,12 +32,10 @@ const DefaultLayout: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
   return (
     <Wrapper>
       <SidebarArea>
-        <div>sidebar area upd: {Date.now()}</div>
-        <Link to="/"> to top </Link>
-        <Link to="/next"> to next </Link>
+        <TempSideBar />
       </SidebarArea>
       <MainArea>
-        <div> {children} </div>
+        <MountArea>{children}</MountArea>
         <FooterArea>footer area</FooterArea>
       </MainArea>
     </Wrapper>

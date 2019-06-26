@@ -20,7 +20,6 @@ class MountPoint extends React.Component<IProps> {
 
   public componentDidMount() {
     const { microId } = this.props
-    console.log(`els: ${this.refEls.current}, id: ${microId.toId()}`)
     window.registry
       .whenDefined(microId.toId())
       .then(factory => {
@@ -40,7 +39,8 @@ class MountPoint extends React.Component<IProps> {
   }
 
   render() {
-    return <div ref={this.refEls} />
+    const { microId } = this.props
+    return <div ref={this.refEls} id={microId.toId()} />
   }
 }
 

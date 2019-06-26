@@ -29,13 +29,11 @@ class MountRegistry implements Registry {
   }
 
   define(id: string, controller: ComponentController) {
+    console.log(`registry.define is called by id: ${id}`)
     this.defined.set(id, controller)
     const will = this.willDefine.get(id)
-    console.log(`define at integration layer : ${id} : ${will}`)
     if (will) {
-      console.log(`define ${id} : will define promise is : ${will.promise}`)
       will.resolver(controller)
-      console.log(`after resolver was called promise : ${will.promise}`)
       this.willDefine.delete(id)
     }
   }
